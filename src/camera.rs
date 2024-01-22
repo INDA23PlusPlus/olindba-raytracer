@@ -11,10 +11,10 @@ pub struct Camera {
 }
 
 impl Camera {
-    pub fn new(position: Vec3, look_at: Vec3, image_width: usize, fov: f64, focal_length: f64, aspect_ratio: f64) -> Camera {
-        let image_height = (image_width as f64 / aspect_ratio) as usize;
-        let theta = f64::to_radians(fov);
-        let h = f64::tan(theta / 2.0);
+    pub fn new(position: Vec3, look_at: Vec3, image_width: usize, fov: f32, focal_length: f32, aspect_ratio: f32) -> Camera {
+        let image_height = (image_width as f32 / aspect_ratio) as usize;
+        let theta = f32::to_radians(fov);
+        let h = f32::tan(theta / 2.0);
         let viewport_height = 2.0 * h * focal_length;
         let viewport_width = viewport_height * aspect_ratio;
 
@@ -25,8 +25,8 @@ impl Camera {
         let viewport_u = u * viewport_width;
         let viewport_v = v * (-viewport_height);
 
-        let delta_u = viewport_u * (1.0 / image_width as f64);
-        let delta_v = viewport_v * (1.0 / image_height as f64);
+        let delta_u = viewport_u * (1.0 / image_width as f32);
+        let delta_v = viewport_v * (1.0 / image_height as f32);
 
         let viewport_upper_left = position - w * focal_length - viewport_u * 0.5 - viewport_v * 0.5;
 

@@ -11,11 +11,11 @@ use crate::{
 pub struct Scene {
     objects: Vec<Box<dyn Hittable>>,
     camera: Camera,
-    sun_strength: f64
+    sun_strength: f32
 }
 
 impl Scene {
-    pub fn new(camera: Camera, sun_strength: f64) -> Scene {
+    pub fn new(camera: Camera, sun_strength: f32) -> Scene {
         Scene {
             objects: vec![],
             camera,
@@ -79,8 +79,8 @@ impl Scene {
                 for _ in 0..ray_count {
 
                     let viewport_pixel = self.camera.viewport_upper_left() 
-                        + self.camera.delta_u() * ((x as f64) + rng.next()) 
-                        + self.camera.delta_v() * ((y as f64) + rng.next());
+                        + self.camera.delta_u() * ((x as f32) + rng.next()) 
+                        + self.camera.delta_v() * ((y as f32) + rng.next());
                     let ray_direction = viewport_pixel - self.camera.position();
 
                     let ray = Ray::new(
@@ -90,7 +90,7 @@ impl Scene {
 
                     average_color = average_color + self.trace_ray(ray, bounce_count, &mut rng);
                 }
-                image.set(x, y, color::linear_to_gamma(average_color / ray_count as f64));
+                image.set(x, y, color::linear_to_gamma(average_color / ray_count as f32));
             }
             println!("{}", y);
         }

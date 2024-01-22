@@ -9,7 +9,20 @@ impl Random {
         Random { seed }
     }
 
-    pub fn next(&mut self) -> f64 {
+    pub fn next(&mut self) -> f32 {
+        self.seed = self.seed.wrapping_mul(747796405).wrapping_add(2891336453);
+
+        let result = (self
+            .seed
+            .wrapping_shr(self.seed.wrapping_shr(28).wrapping_add(4))
+            ^ self.seed)
+            .wrapping_mul(747796405);
+        let result = result.wrapping_shr(22) ^ result;
+
+        result as f32 / u32::MAX as f32
+    }
+
+    pub fn next_f64(&mut self) -> f64 {
         self.seed = self.seed.wrapping_mul(747796405).wrapping_add(2891336453);
 
         let result = (self

@@ -4,12 +4,12 @@ use crate::image::color::Color;
 pub struct Material {
     pub color: Color,
     pub emission_color: Color,
-    pub emission_strength: f64,
-    pub smoothness: f64
+    pub emission_strength: f32,
+    pub smoothness: f32
 }
 
 impl Material {
-    pub fn new(color: Color, emission_color: Color, emission_strength: f64, smoothness: f64) -> Material {
+    pub fn new(color: Color, emission_color: Color, emission_strength: f32, smoothness: f32) -> Material {
         Material { 
             color,
             emission_color,

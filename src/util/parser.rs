@@ -9,9 +9,9 @@ pub fn parse_obj(data: &str) -> Vec<Triangle> {
 
         if line.starts_with("v ") {
             let mut coords = line.split_whitespace().skip(1);
-            let x = coords.next().unwrap().parse::<f64>().unwrap();
-            let y = coords.next().unwrap().parse::<f64>().unwrap();
-            let z = coords.next().unwrap().parse::<f64>().unwrap();
+            let x = coords.next().unwrap().parse::<f32>().unwrap();
+            let y = coords.next().unwrap().parse::<f32>().unwrap();
+            let z = coords.next().unwrap().parse::<f32>().unwrap();
             vertices.push(Vec3::new([x, y, z]));
         }
 
@@ -36,9 +36,9 @@ pub fn parse_vex(data: &str) -> Vec<Triangle> {
     let mut points: Vec<Vec3> = vec![];
     for line in data.lines() {
         let mut coords = line.split_whitespace();
-        let x = coords.next().unwrap().parse::<f64>().unwrap();
-        let y = coords.next().unwrap().parse::<f64>().unwrap();
-        let z = coords.next().unwrap().parse::<f64>().unwrap();
+        let x = coords.next().unwrap().parse::<f32>().unwrap();
+        let y = coords.next().unwrap().parse::<f32>().unwrap();
+        let z = coords.next().unwrap().parse::<f32>().unwrap();
         points.push(Vec3::new([x, y, z]));
     }
 

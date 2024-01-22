@@ -7,15 +7,15 @@ use raytracer::{
 };
 
 const IMAGE_WIDTH: usize = 1280;
-const ASPECT_RATIO: f64 = 16.0 / 9.0;
+const ASPECT_RATIO: f32 = 16.0 / 9.0;
 
-const FOV: f64 = 60.0;
-const FOCAL_LENGTH: f64 = 2.0;
+const FOV: f32 = 60.0;
+const FOCAL_LENGTH: f32 = 2.0;
 
 const MAX_BOUNCE_COUNT: usize = 15;
 const RAY_COUNT: usize = 500;
 
-const SUN_STRENGTH: f64 = 0.4;
+const SUN_STRENGTH: f32 = 0.4;
 
 fn main() {
     let camera = Camera::new(
@@ -28,21 +28,21 @@ fn main() {
     );
     
     let mut scene = Scene::new(camera.clone(), SUN_STRENGTH);
-    let ref pi = std::f64::consts::PI;
+    let ref pi = std::f32::consts::PI;
     let square_data = include_str!("square");
 
     for d in 0..15 {
         let cnt = 2 * d;
         for b in 0..cnt {
-            let p = -pi + 2.0 * pi * b as f64 / cnt as f64;
+            let p = -pi + 2.0 * pi * b as f32 / cnt as f32;
             if p == 0.0 || p == -pi { continue; }
             scene.add_object(Box::new(Mesh::from_vex(
                 square_data, 
-                Vec3::new([f64::cos(p) * (40 - cnt) as f64 / 1.5, -d as f64, f64::sin(p) * (40 - cnt) as f64 / 1.5]), 
+                Vec3::new([f32::cos(p) * (40 - cnt) as f32 / 1.5, -d as f32, f32::sin(p) * (40 - cnt) as f32 / 1.5]), 
                 Vec3::new([0.0, p * -57.0, 0.0]), 
-                (40 - cnt) as f64 / 6.0, 
+                (40 - cnt) as f32 / 6.0, 
                 Material::new(
-                    Color::new(f64::cos(p).abs(), b as f64 / cnt as f64, f64::sin(p).abs()),
+                    Color::new(f32::cos(p).abs(), b as f32 / cnt as f32, f32::sin(p).abs()),
                     Color::white(),
                     0.0,
                     0.0

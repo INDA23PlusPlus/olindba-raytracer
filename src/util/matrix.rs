@@ -2,11 +2,11 @@ use super::vector::Vec3;
 
 #[derive(Copy, Clone)]
 pub struct Mat3 {
-    elements: [f64; 9]
+    elements: [f32; 9]
 }
 
 impl Mat3 {
-    pub fn new(elements: [f64; 9]) -> Mat3 {
+    pub fn new(elements: [f32; 9]) -> Mat3 {
         Mat3 { elements }
     }
 
@@ -14,15 +14,15 @@ impl Mat3 {
         Mat3 { elements: [0.0; 9] }
     }
 
-    pub fn set(&mut self, y: usize, x: usize, value: f64) {
+    pub fn set(&mut self, y: usize, x: usize, value: f32) {
         self.elements[y * 3 + x] = value;
     }
 
-    pub fn get(&self, y: usize, x: usize) -> f64 {
+    pub fn get(&self, y: usize, x: usize) -> f32 {
         self.elements[y * 3 + x]
     }
 
-    pub fn rot_matrix(degrees: f64, axis: usize) -> Mat3 {
+    pub fn rot_matrix(degrees: f32, axis: usize) -> Mat3 {
         match axis {
             0 => Self::rot_x(degrees),
             1 => Self::rot_y(degrees),
@@ -31,36 +31,36 @@ impl Mat3 {
         }
     }
 
-    pub fn rot_x(degrees: f64) -> Mat3 {
-        let ref pi = std::f64::consts::PI;
+    pub fn rot_x(degrees: f32) -> Mat3 {
+        let ref pi = std::f32::consts::PI;
         let mut matrix = Mat3::zero();
         matrix.set(0, 0, 1.0);
-        matrix.set(1, 1, f64::cos(degrees * pi / 180.0));
-        matrix.set(2, 1, f64::sin(degrees * pi / 180.0));
-        matrix.set(1, 2, -f64::sin(degrees * pi / 180.0));
-        matrix.set(2, 2, f64::cos(degrees * pi / 180.0));
+        matrix.set(1, 1, f32::cos(degrees * pi / 180.0));
+        matrix.set(2, 1, f32::sin(degrees * pi / 180.0));
+        matrix.set(1, 2, -f32::sin(degrees * pi / 180.0));
+        matrix.set(2, 2, f32::cos(degrees * pi / 180.0));
         matrix
     }
 
-    pub fn rot_y(degrees: f64) -> Mat3 {
-        let pi = std::f64::consts::PI;
+    pub fn rot_y(degrees: f32) -> Mat3 {
+        let pi = std::f32::consts::PI;
         let mut matrix = Mat3::zero();
         matrix.set(1, 1, 1.0);
-        matrix.set(0, 0, f64::cos(degrees * pi / 180.0));
-        matrix.set(2, 0, -f64::sin(degrees * pi / 180.0));
-        matrix.set(0, 2, f64::sin(degrees * pi / 180.0));
-        matrix.set(2, 2, f64::cos(degrees * pi / 180.0));
+        matrix.set(0, 0, f32::cos(degrees * pi / 180.0));
+        matrix.set(2, 0, -f32::sin(degrees * pi / 180.0));
+        matrix.set(0, 2, f32::sin(degrees * pi / 180.0));
+        matrix.set(2, 2, f32::cos(degrees * pi / 180.0));
         matrix
     }
 
-    pub fn rot_z(degrees: f64) -> Mat3 {
-        let pi = std::f64::consts::PI;
+    pub fn rot_z(degrees: f32) -> Mat3 {
+        let pi = std::f32::consts::PI;
         let mut matrix = Mat3::zero();
         matrix.set(2, 2, 1.0);
-        matrix.set(0, 0, f64::cos(degrees * pi / 180.0));
-        matrix.set(1, 0, f64::sin(degrees * pi / 180.0));
-        matrix.set(0, 1, -f64::sin(degrees * pi / 180.0));
-        matrix.set(1, 1, f64::cos(degrees * pi / 180.0));
+        matrix.set(0, 0, f32::cos(degrees * pi / 180.0));
+        matrix.set(1, 0, f32::sin(degrees * pi / 180.0));
+        matrix.set(0, 1, -f32::sin(degrees * pi / 180.0));
+        matrix.set(1, 1, f32::cos(degrees * pi / 180.0));
         matrix
     }
 }

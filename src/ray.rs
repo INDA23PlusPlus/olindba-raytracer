@@ -16,12 +16,12 @@ impl Ray {
 
 #[derive(Clone)]
 pub struct Interval {
-    pub min: f64,
-    pub max: f64
+    pub min: f32,
+    pub max: f32
 }
 
 impl Interval {
-    pub fn new(min: f64, max: f64) -> Interval {
+    pub fn new(min: f32, max: f32) -> Interval {
         Interval {
             min,
             max
@@ -49,7 +49,7 @@ impl Interval {
         }
     }
 
-    pub fn expand(&mut self, delta: f64) {
+    pub fn expand(&mut self, delta: f32) {
         self.min = self.min - delta / 2.0;
         self.max = self.max + delta / 2.0;
     }

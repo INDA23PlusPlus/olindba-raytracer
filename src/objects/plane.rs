@@ -4,7 +4,7 @@ use crate::{ray::{Ray, Interval}, util::vector::Vec3, bvh::aabb::AABB};
 #[derive(Clone)]
 pub struct Plane {
     pub normal: Vec3,
-    pub distance: f64,
+    pub distance: f32,
     bbox: AABB,
     material: Material
 }

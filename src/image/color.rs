@@ -1,12 +1,12 @@
 #[derive(Copy, Clone)]
 pub struct Color {
-    pub r: f64,
-    pub g: f64,
-    pub b: f64
+    pub r: f32,
+    pub g: f32,
+    pub b: f32
 }
 
 impl Color {
-    pub fn new(r: f64, g: f64, b: f64) -> Color {
+    pub fn new(r: f32, g: f32, b: f32) -> Color {
         Color { r, g, b }
     }
 
@@ -56,10 +56,10 @@ impl std::ops::Mul for Color {
     }
 }
 
-impl std::ops::Mul<f64> for Color {
+impl std::ops::Mul<f32> for Color {
     type Output = Color;
 
-    fn mul(self, rhs: f64) -> Color {
+    fn mul(self, rhs: f32) -> Color {
         Color {
             r: self.r * rhs,
             g: self.g * rhs,
@@ -68,10 +68,10 @@ impl std::ops::Mul<f64> for Color {
     }
 }
 
-impl std::ops::Div<f64> for Color {
+impl std::ops::Div<f32> for Color {
     type Output = Color;
 
-    fn div(self, rhs: f64) -> Self::Output {
+    fn div(self, rhs: f32) -> Self::Output {
         Color {
             r: self.r / rhs,
             g: self.g / rhs,
@@ -80,11 +80,11 @@ impl std::ops::Div<f64> for Color {
     }
 }
 
-pub fn lerp(color1: Color, color2: Color, step: f64) -> Color {
+pub fn lerp(color1: Color, color2: Color, step: f32) -> Color {
     color1 + (color2 - color1) * step
 }
 
-pub fn smoothstep(edge1: f64, edge2: f64, x: f64) -> f64 {
+pub fn smoothstep(edge1: f32, edge2: f32, x: f32) -> f32 {
     let mut y = (x - edge1) / (edge2 - edge1);
     if y < 0.0 {
         y = 0.0;

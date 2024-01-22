@@ -4,13 +4,13 @@ use crate::{ray::{Ray, Interval}, util::vector::Vec3, bvh::aabb::AABB};
 #[derive(Clone)]
 pub struct Sphere {
     center: Vec3,
-    radius: f64,
+    radius: f32,
     bbox: AABB,
     material: Material
 }
 
 impl Sphere {
-    pub fn new(center: Vec3, radius: f64, material: Material) -> Sphere {
+    pub fn new(center: Vec3, radius: f32, material: Material) -> Sphere {
         let x = Interval::new(center.get(0) - radius, center.get(0) + radius);
         let y = Interval::new(center.get(1) - radius, center.get(1) + radius);
         let z = Interval::new(center.get(2) - radius, center.get(2) + radius);

@@ -5,7 +5,7 @@ use super::material::Material;
 
 #[derive(Copy, Clone)]
 pub struct HitRecord {
-    pub t: f64,
+    pub t: f32,
     pub point: Vec3,
     pub normal: Vec3,
     pub material: Material

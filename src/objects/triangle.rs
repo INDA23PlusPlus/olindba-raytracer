@@ -32,13 +32,13 @@ impl Triangle {
         let mut y = Interval::rev();
         let mut z = Interval::rev();
         for vec in [a, b, c] {
-            x.min = f64::min(x.min, vec.get(0));
-            y.min = f64::min(y.min, vec.get(1));
-            z.min = f64::min(z.min, vec.get(2));
+            x.min = f32::min(x.min, vec.get(0));
+            y.min = f32::min(y.min, vec.get(1));
+            z.min = f32::min(z.min, vec.get(2));
 
-            x.max = f64::max(x.max, vec.get(0));
-            y.max = f64::max(y.max, vec.get(1));
-            z.max = f64::max(z.max, vec.get(2));
+            x.max = f32::max(x.max, vec.get(0));
+            y.max = f32::max(y.max, vec.get(1));
+            z.max = f32::max(z.max, vec.get(2));
         }
         if x.min == x.max { x.expand(1e-6) }
         if y.min == y.max { y.expand(1e-6) }
@@ -67,7 +67,7 @@ impl Triangle {
         self.normal = Self::normal(self.a, self.b, self.c);
     }
 
-    pub fn scale(&mut self, scale: f64) {
+    pub fn scale(&mut self, scale: f32) {
         self.a = self.a * scale;
         self.b = self.b * scale;
         self.c = self.c * scale;

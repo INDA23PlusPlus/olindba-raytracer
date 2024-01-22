@@ -15,6 +15,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d468802bab17cbc0cc575e9b053f41e72aa36bfa6b7f55e3529ffa43161b97fa"
 
 [[package]]
+name = "benchmarking"
+version = "0.4.12"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "32842502e72b27b30b2681692d16bf47a8a375c5a2795613f0dc699bed9a48bb"
+
+[[package]]
 name = "bit_field"
 version = "0.10.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -264,6 +270,7 @@ dependencies = [
 name = "olindba-raytracer"
 version = "0.1.0"
 dependencies = [
+ "benchmarking",
  "image",
 ]
 

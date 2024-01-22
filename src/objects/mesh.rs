@@ -12,7 +12,7 @@ impl Mesh {
         triangles: Vec<Triangle>,
         position: Vec3,
         rotation: Vec3,
-        scale: f64,
+        scale: f32,
         material: Material) -> Mesh {
 
         let mut triangles = triangles;
@@ -38,7 +38,7 @@ impl Mesh {
         data: &str, 
         position: Vec3, 
         rotation: Vec3,
-        scale: f64,
+        scale: f32,
         material: Material) -> Mesh {
         
         Mesh::new(parse_obj(data), position, rotation, scale, material)
@@ -48,7 +48,7 @@ impl Mesh {
         data: &str, 
         position: Vec3, 
         rotation: Vec3,
-        scale: f64,
+        scale: f32,
         material: Material) -> Mesh {
 
         Mesh::new(parse_vex(data), position, rotation, scale, material)

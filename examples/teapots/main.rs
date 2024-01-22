@@ -7,15 +7,15 @@ use raytracer::{
 };
 
 const IMAGE_WIDTH: usize = 1280;
-const ASPECT_RATIO: f64 = 16.0 / 9.0;
+const ASPECT_RATIO: f32 = 16.0 / 9.0;
 
-const FOV: f64 = 60.0;
-const FOCAL_LENGTH: f64 = 2.0;
+const FOV: f32 = 60.0;
+const FOCAL_LENGTH: f32 = 2.0;
 
 const MAX_BOUNCE_COUNT: usize = 15;
 const RAY_COUNT: usize = 100;
 
-const SUN_STRENGTH: f64 = 0.5;
+const SUN_STRENGTH: f32 = 0.5;
 
 fn main() {
     let camera = Camera::new(
@@ -35,7 +35,7 @@ fn main() {
     for _ in 0..20 {
         scene.add_object(Box::new(Mesh::from_obj(
             teapot_data,
-            Vec3::new([rng.next() * 30.0 - 15.0, rng.next() * 8.0, -rng.next() * 20.0 + 0.0]),
+            Vec3::new([rng.next() * 30.0 - 15.0, rng.next() * 8.0, -rng.next() * 20.0]),
             Vec3::new([rng.next() * 180.0 + 90.0, rng.next() * 180.0 + 90.0, rng.next() * 180.0 + 90.0]),
             1.0,
             Material::new(

@@ -7,15 +7,15 @@ use raytracer::{
 };
 
 const IMAGE_WIDTH: usize = 1280;
-const ASPECT_RATIO: f64 = 16.0 / 9.0;
+const ASPECT_RATIO: f32 = 16.0 / 9.0;
 
-const FOV: f64 = 60.0;
-const FOCAL_LENGTH: f64 = 2.0;
+const FOV: f32 = 60.0;
+const FOCAL_LENGTH: f32 = 2.0;
 
 const MAX_BOUNCE_COUNT: usize = 5;
 const RAY_COUNT: usize = 500;
 
-const SUN_STRENGTH: f64 = 0.5;
+const SUN_STRENGTH: f32 = 0.5;
 
 fn main() {
     let camera = Camera::new(

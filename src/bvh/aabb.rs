@@ -22,17 +22,17 @@ impl AABB {
 
     pub fn comb(a: &AABB, b: &AABB) -> AABB {
         AABB {
-            x: Interval::new(f64::min(a.x.min, b.x.min), f64::max(a.x.max, b.x.max)),
-            y: Interval::new(f64::min(a.y.min, b.y.min), f64::max(a.y.max, b.y.max)),
-            z: Interval::new(f64::min(a.z.min, b.z.min), f64::max(a.z.max, b.z.max))
+            x: Interval::new(f32::min(a.x.min, b.x.min), f32::max(a.x.max, b.x.max)),
+            y: Interval::new(f32::min(a.y.min, b.y.min), f32::max(a.y.max, b.y.max)),
+            z: Interval::new(f32::min(a.z.min, b.z.min), f32::max(a.z.max, b.z.max))
         }
     }
 
     pub fn from_vec(a: &Vec3, b: &Vec3) -> AABB {
         AABB {
-            x: Interval::new(f64::min(a.get(0), b.get(0)), f64::max(a.get(0), b.get(0))),
-            y: Interval::new(f64::min(a.get(1), b.get(1)), f64::max(a.get(1), b.get(1))),
-            z: Interval::new(f64::min(a.get(2), b.get(2)), f64::max(a.get(2), b.get(2)))
+            x: Interval::new(f32::min(a.get(0), b.get(0)), f32::max(a.get(0), b.get(0))),
+            y: Interval::new(f32::min(a.get(1), b.get(1)), f32::max(a.get(1), b.get(1))),
+            z: Interval::new(f32::min(a.get(2), b.get(2)), f32::max(a.get(2), b.get(2)))
         }
     }
 
